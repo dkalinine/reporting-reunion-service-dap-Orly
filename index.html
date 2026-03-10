@@ -264,8 +264,12 @@
                     <div class="observation-column">
                         <div class="bullet-list" id="judicial-affairs-container">
                             <!-- Affaire par défaut -->
-                            <div class="judicial-affair-item">
-                                <p><strong>Affaire 1 :</strong></p>
+                            <div class="judicial-affair-item" id="affair-1">
+                                <p><strong>Affaire 1 :</strong> 
+                                    <button type="button" class="btn btn-outline-danger btn-sm float-end" onclick="removeJudicialAffair(1)">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </button>
+                                </p>
                                 <ul>
                                     <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
                                     <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
@@ -632,8 +636,13 @@
             
             const newAffairDiv = document.createElement('div');
             newAffairDiv.className = 'judicial-affair-item';
+            newAffairDiv.id = `affair-${affairCount}`;
             newAffairDiv.innerHTML = `
-                <p><strong>Affaire ${affairCount} :</strong></p>
+                <p><strong>Affaire ${affairCount} :</strong> 
+                    <button type="button" class="btn btn-outline-danger btn-sm float-end" onclick="removeJudicialAffair(${affairCount})">
+                        <i class="fas fa-trash"></i> Supprimer
+                    </button>
+                </p>
                 <ul>
                     <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
                     <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
@@ -644,6 +653,19 @@
             
             // Insérer avant le bouton d'ajout
             container.insertBefore(newAffairDiv, container.lastElementChild);
+        }
+
+        function removeJudicialAffair(id) {
+            const affairElement = document.getElementById(`affair-${id}`);
+            if (affairElement) {
+                // Vérifier qu'il y a au moins une affaire
+                const affairItems = document.querySelectorAll('.judicial-affair-item');
+                if (affairItems.length > 1) {
+                    affairElement.remove();
+                } else {
+                    alert("Vous devez avoir au moins une affaire.");
+                }
+            }
         }
     </script>
 </body>
