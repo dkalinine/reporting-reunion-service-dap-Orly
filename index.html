@@ -265,7 +265,7 @@
                         <div class="bullet-list" id="judicial-affairs-container">
                             <!-- Affaire par défaut -->
                             <div class="judicial-affair-item" id="affair-1">
-                                <p><strong>Affaire 1 :</strong> 
+                                <p><strong>Affaire 1 :</strong>
                                     <button type="button" class="btn btn-outline-danger btn-sm float-end" onclick="removeJudicialAffair(1)">
                                         <i class="fas fa-trash"></i> Supprimer
                                     </button>
@@ -277,13 +277,18 @@
                                     <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
                                 </ul>
                             </div>
-                            
                             <!-- Bouton pour ajouter une nouvelle affaire -->
                             <div class="mt-3">
                                 <button type="button" class="btn btn-outline-primary btn-sm" onclick="addJudicialAffair()">
                                     <i class="fas fa-plus"></i> Ajouter une affaire
                                 </button>
                             </div>
+                        </div>
+
+                        <!-- Nouvelle zone : Observations générales sur les affaires judiciaires -->
+                        <div class="mt-4">
+                            <label for="generalJudicialObservations" class="form-label fw-bold">Observations générales sur les affaires judiciaires :</label>
+                            <textarea id="generalJudicialObservations" class="form-control observation-box" placeholder="Saisissez ici vos observations générales sur les affaires judiciaires du week-end..." rows="3"></textarea>
                         </div>
                     </div>
                 </div>
@@ -554,7 +559,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Nouvelle section : Observations semaine écoulée -->
             <div class="section-title">Observations semaine écoulée</div>
             <div class="row form-section">
@@ -601,32 +605,51 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('reportDate').value = today;
         });
+
         function submitForm() {
             const date = document.getElementById('reportDate').value;
+            const generalObservations = document.getElementById('generalJudicialObservations').value;
+
             if (!date) {
                 alert("Veuillez sélectionner une date");
                 return;
             }
-            alert(`Rapport enregistré pour la date : ${date}`);
+
+            // Affichage des données récupérées (simulé)
+            alert(`Rapport enregistré pour la date : ${date}\nObservations générales : ${generalObservations}`);
         }
+
         function generatePDF() {
-            // Initialisation de jsPDF
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            // Ajout du titre
+
+            // Titre
             doc.setFontSize(22);
             doc.text("Compte rendu réunion de service", 105, 20, { align: 'center' });
-            // Ajout de la date
+
+            // Date
             const date = document.getElementById('reportDate').value;
             doc.setFontSize(14);
             doc.text(`Date : ${date}`, 20, 30);
-            // Ajout du contenu du formulaire ici...
+
+            // Observations générales
+            const generalObs = document.getElementById('generalJudicialObservations').value;
+            if (generalObs.trim()) {
+                doc.setFontSize(12);
+                doc.text("Observations générales sur les affaires judiciaires :", 20, 40);
+                const splitText = doc.splitTextToSize(generalObs, 170);
+                doc.text(splitText, 20, 45);
+            }
+
+            // Sauvegarder le PDF
             doc.save("rapport_service.pdf");
         }
+
         function generateODS() {
             // Implémentation simplifiée pour ODS
             alert("Export ODS simulé.");
         }
+
         function downloadAsCSV() {
             // Implémentation simplifiée pour CSV
             alert("Export CSV simulé.");
@@ -634,16 +657,14 @@
 
         // Fonction pour ajouter une nouvelle affaire judiciaire
         let affairCount = 1;
-
         function addJudicialAffair() {
             affairCount++;
             const container = document.getElementById('judicial-affairs-container');
-            
             const newAffairDiv = document.createElement('div');
             newAffairDiv.className = 'judicial-affair-item';
             newAffairDiv.id = `affair-${affairCount}`;
             newAffairDiv.innerHTML = `
-                <p><strong>Affaire ${affairCount} :</strong> 
+                <p><strong>Affaire ${affairCount} :</strong>
                     <button type="button" class="btn btn-outline-danger btn-sm float-end" onclick="removeJudicialAffair(${affairCount})">
                         <i class="fas fa-trash"></i> Supprimer
                     </button>
@@ -655,7 +676,6 @@
                     <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
                 </ul>
             `;
-            
             // Insérer avant le bouton d'ajout
             container.insertBefore(newAffairDiv, container.lastElementChild);
         }
@@ -675,4 +695,3 @@
     </script>
 </body>
 </html>
-
