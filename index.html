@@ -143,6 +143,67 @@
         .bullet-list li {
             margin-bottom: 5px;
         }
+
+        /* Styles pour le carousel */
+        .carousel-nav {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .nav-tabs-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 5px;
+            padding: 5px;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            padding: 10px 15px;
+            background-color: #d0e7ff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-tab.active {
+            background-color: #a3c9ff;
+            color: white;
+        }
+
+        .nav-btn {
+            padding: 10px 15px;
+            background-color: #e0f0ff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background-color: #c0e0ff;
+        }
+
+        /* Section carousel */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -175,7 +236,6 @@
                 <img src="https://raw.githubusercontent.com/dkalinine/reporting-reunion-service-dap-Orly/main/PAF%20dap.png" alt="Logo Administration Territoriale">
             </div>
         </div>
-
         <!-- Date de saisie -->
         <div class="date-header">
             <div class="row">
@@ -186,38 +246,28 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
-        <ul class="nav nav-tabs" id="reportTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="weekend-tab" data-bs-toggle="tab" data-bs-target="#weekend" type="button" role="tab">Synthèse du week-end</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly" type="button" role="tab">Synthèse hebdomadaire</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="dct-tab" data-bs-toggle="tab" data-bs-target="#dct" type="button" role="tab">DCT</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="dist-tab" data-bs-toggle="tab" data-bs-target="#dist" type="button" role="tab">DIST</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="etatmaj-tab" data-bs-toggle="tab" data-bs-target="#etatmaj" type="button" role="tab">Etat-major</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="daf-tab" data-bs-toggle="tab" data-bs-target="#daf" type="button" role="tab">DAF</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="commandes-tab" data-bs-toggle="tab" data-bs-target="#commandes" type="button" role="tab">Commandes</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="agenda-tab" data-bs-toggle="tab" data-bs-target="#agenda" type="button" role="tab">Agenda de la semaine</button>
-            </li>
-        </ul>
+        <!-- Navigation Carousel -->
+        <div class="carousel-nav">
+            <div class="nav-container">
+                <button class="nav-btn prev-btn" onclick="changeSection(-1)">&#10094; Précédent</button>
+                <div class="nav-tabs-carousel">
+                    <button class="nav-tab active" data-target="weekend">Synthèse du week-end</button>
+                    <button class="nav-tab" data-target="weekly">Synthèse hebdomadaire</button>
+                    <button class="nav-tab" data-target="dct">DCT</button>
+                    <button class="nav-tab" data-target="dist">DIST</button>
+                    <button class="nav-tab" data-target="etatmaj">Etat-major</button>
+                    <button class="nav-tab" data-target="daf">DAF</button>
+                    <button class="nav-tab" data-target="commandes">Commandes</button>
+                    <button class="nav-tab" data-target="agenda">Agenda de la semaine</button>
+                </div>
+                <button class="nav-btn next-btn" onclick="changeSection(1)">Suivant &#10095;</button>
+            </div>
+        </div>
 
-        <!-- Contenu des onglets -->
+        <!-- Contenu des sections -->
         <div class="tab-content" id="reportTabContent">
             <!-- Partie 1 : Synthèse du week-end -->
-            <div class="tab-pane fade show active" id="weekend" role="tabpanel">
+            <div class="section active" id="weekend">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Synthèse du week-end</h2>
                     <!-- Section Trafic passagers -->
@@ -327,9 +377,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 2 : Synthèse hebdomadaire -->
-            <div class="tab-pane fade" id="weekly" role="tabpanel">
+            <div class="section" id="weekly">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Synthèse hebdomadaire</h2>
                     <!-- Section Interventions SDF -->
@@ -605,9 +654,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 3 : DCT -->
-            <div class="tab-pane fade" id="dct" role="tabpanel">
+            <div class="section" id="dct">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">DCT</h2>
                     <div class="row form-section">
@@ -619,9 +667,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 4 : DIST -->
-            <div class="tab-pane fade" id="dist" role="tabpanel">
+            <div class="section" id="dist">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">DIST</h2>
                     <div class="row form-section">
@@ -633,9 +680,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 5 : Etat-major -->
-            <div class="tab-pane fade" id="etatmaj" role="tabpanel">
+            <div class="section" id="etatmaj">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Etat-major</h2>
                     <div class="row form-section">
@@ -647,9 +693,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 5.5 : DAF -->
-            <div class="tab-pane fade" id="daf" role="tabpanel">
+            <div class="section" id="daf">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">DAF</h2>
                     <div class="row form-section">
@@ -661,9 +706,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 6 : Commandes -->
-            <div class="tab-pane fade" id="commandes" role="tabpanel">
+            <div class="section" id="commandes">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Commandes</h2>
                     <div class="row form-section">
@@ -675,9 +719,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Partie 7 : Agenda de la semaine -->
-            <div class="tab-pane fade" id="agenda" role="tabpanel">
+            <div class="section" id="agenda">
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Agenda de la semaine</h2>
                     <div class="row form-section">
@@ -690,7 +733,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Boutons d'export -->
         <div class="export-buttons">
             <h3 class="text-center mb-4"><i class="fas fa-file-export"></i> Exporter le rapport</h3>
@@ -727,6 +769,48 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('reportDate').value = today;
         });
+
+        let currentSectionIndex = 0;
+        const sections = ['weekend', 'weekly', 'dct', 'dist', 'etatmaj', 'daf', 'commandes', 'agenda'];
+        const tabButtons = document.querySelectorAll('.nav-tab');
+
+        function showSection(index) {
+            // Masquer toutes les sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Afficher la section courante
+            const sectionId = sections[index];
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Mettre à jour les classes actives
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabButtons[index].classList.add('active');
+        }
+
+        function changeSection(direction) {
+            currentSectionIndex += direction;
+
+            if (currentSectionIndex < 0) currentSectionIndex = sections.length - 1;
+            if (currentSectionIndex >= sections.length) currentSectionIndex = 0;
+
+            showSection(currentSectionIndex);
+        }
+
+        // Initialiser la première section
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection(0);
+        });
+
+        // Gestion clic sur les onglets
+        tabButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                currentSectionIndex = index;
+                showSection(currentSectionIndex);
+            });
+        });
+
         function submitForm() {
             const date = document.getElementById('reportDate').value;
             const generalObservations = document.getElementById('generalJudicialObservations').value;
@@ -736,6 +820,7 @@
             }
             alert(`Rapport enregistré pour la date : ${date}\nObservations générales : ${generalObservations}`);
         }
+
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -753,12 +838,15 @@
             }
             doc.save("rapport_service.pdf");
         }
+
         function generateODS() {
             alert("Export ODS simulé.");
         }
+
         function downloadAsCSV() {
             alert("Export CSV simulé.");
         }
+
         // Fonction pour ajouter une nouvelle affaire judiciaire
         let affairCount = 1;
         function addJudicialAffair() {
@@ -782,6 +870,7 @@
             `;
             container.insertBefore(newAffairDiv, container.lastElementChild);
         }
+
         function removeJudicialAffair(id) {
             const affairElement = document.getElementById(`affair-${id}`);
             if (affairElement) {
