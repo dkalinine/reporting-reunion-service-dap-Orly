@@ -284,7 +284,6 @@
                                 </button>
                             </div>
                         </div>
-
                         <!-- Nouvelle zone : Observations générales du week-end -->
                         <div class="mt-4">
                             <label for="generalJudicialObservations" class="form-label fw-bold">Observations générales du week-end :</label>
@@ -569,6 +568,77 @@
                 </div>
             </div>
         </div>
+        <!-- Partie 3 : DCT -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">DCT</h2>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Saisissez ici vos observations concernant la DCT..." rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie 4 : DIST -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">DIST</h2>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Saisissez ici vos observations concernant la DIST..." rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie 5 : Etat-major -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">Etat-major</h2>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Saisissez ici vos observations concernant l'Etat-major..." rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie 5.5 : DAF -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">DAF</h2>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Saisissez ici vos observations concernant la DAF..." rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie 6 : Commandes -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">Commandes</h2>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Saisissez ici vos observations concernant les commandes..." rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie 7 : Agenda de la semaine -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">Agenda de la semaine</h2>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Saisissez ici les événements ou actions planifiés pour la semaine..." rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Boutons d'export -->
         <div class="export-buttons">
             <h3 class="text-center mb-4"><i class="fas fa-file-export"></i> Exporter le rapport</h3>
@@ -605,33 +675,26 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('reportDate').value = today;
         });
-
         function submitForm() {
             const date = document.getElementById('reportDate').value;
             const generalObservations = document.getElementById('generalJudicialObservations').value;
-
             if (!date) {
                 alert("Veuillez sélectionner une date");
                 return;
             }
-
             // Affichage des données récupérées (simulé)
             alert(`Rapport enregistré pour la date : ${date}\nObservations générales : ${generalObservations}`);
         }
-
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-
             // Titre
             doc.setFontSize(22);
             doc.text("Compte rendu réunion de service", 105, 20, { align: 'center' });
-
             // Date
             const date = document.getElementById('reportDate').value;
             doc.setFontSize(14);
             doc.text(`Date : ${date}`, 20, 30);
-
             // Observations générales
             const generalObs = document.getElementById('generalJudicialObservations').value;
             if (generalObs.trim()) {
@@ -640,21 +703,17 @@
                 const splitText = doc.splitTextToSize(generalObs, 170);
                 doc.text(splitText, 20, 45);
             }
-
             // Sauvegarder le PDF
             doc.save("rapport_service.pdf");
         }
-
         function generateODS() {
             // Implémentation simplifiée pour ODS
             alert("Export ODS simulé.");
         }
-
         function downloadAsCSV() {
             // Implémentation simplifiée pour CSV
             alert("Export CSV simulé.");
         }
-
         // Fonction pour ajouter une nouvelle affaire judiciaire
         let affairCount = 1;
         function addJudicialAffair() {
@@ -679,7 +738,6 @@
             // Insérer avant le bouton d'ajout
             container.insertBefore(newAffairDiv, container.lastElementChild);
         }
-
         function removeJudicialAffair(id) {
             const affairElement = document.getElementById(`affair-${id}`);
             if (affairElement) {
@@ -695,5 +753,3 @@
     </script>
 </body>
 </html>
-
-
