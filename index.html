@@ -1,5 +1,165 @@
-<!-- ... (tête et styles inchangés) ... -->
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte rendu réunion de service</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .observation-box {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .section-title {
+            background-color: #d0e7ff;
+            color: #34495e;
+            padding: 10px;
+            margin-top: 30px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .observation-column {
+            background-color: #eaf4ff;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #a3c9ff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .synthesis-section {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .date-header {
+            background-color: #e0f0ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .form-control {
+            border-radius: 6px;
+        }
+        .table thead th {
+            background-color: #d0e7ff;
+            color: #34495e;
+        }
+        .btn-primary {
+            background-color: #a3c9ff;
+            border-color: #a3c9ff;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #7fb8ff;
+            border-color: #7fb8ff;
+        }
+        .btn-secondary {
+            background-color: #95a5a6;
+            border-color: #95a5a6;
+        }
+        .btn-success {
+            background-color: #58d68d;
+            border-color: #58d68d;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 25px;
+        }
+        .table-bordered {
+            border: 1px solid #d0e7ff;
+        }
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #d0e7ff;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8fcff;
+        }
+        .export-buttons {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .export-btn {
+            margin: 5px;
+            padding: 10px 15px;
+        }
+        .footer-note {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d0e7ff;
+        }
+        .logo-container {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            max-height: 80px;
+            width: auto;
+        }
+        .header-text {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0 20px;
+        }
+        .header-text h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        .header-text p {
+            margin: 5px 0 0 0;
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        .bullet-list {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .bullet-list li {
+            margin-bottom: 5px;
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-container {
+                margin-bottom: 10px;
+            }
+            .header-text {
+                margin: 10px 0;
+            }
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
 <body class="bg-light">
     <div class="container py-4">
         <!-- En-tête avec logos aux côtés du titre -->
@@ -58,7 +218,6 @@
         <div class="tab-content" id="reportTabContent">
             <!-- Partie 1 : Synthèse du week-end -->
             <div class="tab-pane fade show active" id="weekend" role="tabpanel">
-                <!-- [Contenu de la synthèse du week-end] -->
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Synthèse du week-end</h2>
                     <!-- Section Trafic passagers -->
@@ -171,7 +330,6 @@
 
             <!-- Partie 2 : Synthèse hebdomadaire -->
             <div class="tab-pane fade" id="weekly" role="tabpanel">
-                <!-- [Contenu de la synthèse hebdomadaire] -->
                 <div class="synthesis-section">
                     <h2 class="text-center mb-4">Synthèse hebdomadaire</h2>
                     <!-- Section Interventions SDF -->
