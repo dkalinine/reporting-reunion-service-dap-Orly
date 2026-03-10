@@ -31,6 +31,13 @@
             border-left: 4px solid #a3c9ff;
             box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
+        .synthesis-section {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
         .table-container {
             overflow-x: auto;
         }
@@ -129,6 +136,13 @@
             color: #7f8c8d;
             font-size: 1rem;
         }
+        .bullet-list {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .bullet-list li {
+            margin-bottom: 5px;
+        }
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -172,406 +186,360 @@
             </div>
         </div>
 
-        <!-- Section Trafic passagers -->
-        <div class="section-title">Trafic passagers</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Nombre de PAX estimés</th>
-                                <th>Nombre de PAX réalisés</th>
-                                <th>Nombre de passages frontières</th>
-                                <th>nombre de mouvements</th>
-                                <th>dont à l'international</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>samedi</td>
-                                <td><input type="text" class="form-control" placeholder="Estimé"></td>
-                                <td><input type="text" class="form-control" placeholder="Réalisé"></td>
-                                <td><input type="text" class="form-control" placeholder="Frontières"></td>
-                                <td><input type="text" class="form-control" placeholder="Mouvements"></td>
-                                <td><input type="text" class="form-control" placeholder="International"></td>
-                            </tr>
-                            <tr>
-                                <td>dimanche</td>
-                                <td><input type="text" class="form-control" placeholder="Estimé"></td>
-                                <td><input type="text" class="form-control" placeholder="Réalisé"></td>
-                                <td><input type="text" class="form-control" placeholder="Frontières"></td>
-                                <td><input type="text" class="form-control" placeholder="Mouvements"></td>
-                                <td><input type="text" class="form-control" placeholder="International"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <!-- Partie 1 : Synthèse du week-end -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">Synthèse du week-end</h2>
+            
+            <!-- Section Trafic passagers -->
+            <div class="section-title">Trafic passagers</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nombre de PAX estimés</th>
+                                    <th>Nombre de PAX réalisés</th>
+                                    <th>Nombre de passages frontières</th>
+                                    <th>nombre de mouvements</th>
+                                    <th>dont à l'international</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>samedi</td>
+                                    <td><input type="text" class="form-control" placeholder="Estimé"></td>
+                                    <td><input type="text" class="form-control" placeholder="Réalisé"></td>
+                                    <td><input type="text" class="form-control" placeholder="Frontières"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mouvements"></td>
+                                    <td><input type="text" class="form-control" placeholder="International"></td>
+                                </tr>
+                                <tr>
+                                    <td>dimanche</td>
+                                    <td><input type="text" class="form-control" placeholder="Estimé"></td>
+                                    <td><input type="text" class="form-control" placeholder="Réalisé"></td>
+                                    <td><input type="text" class="form-control" placeholder="Frontières"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mouvements"></td>
+                                    <td><input type="text" class="form-control" placeholder="International"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations synthèse du week-end</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
+
+            <!-- Section Non-admission & réacheminement -->
+            <div class="section-title">Non-admission & réacheminement</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>non-admission</th>
+                                    <th>réacheminement</th>
+                                    <th>Autorisé à entrer sur le territoire national</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>samedi</td>
+                                    <td><input type="text" class="form-control" placeholder="non-admission"></td>
+                                    <td><input type="text" class="form-control" placeholder="réacheminement"></td>
+                                    <td><input type="text" class="form-control" placeholder="Autorisé"></td>
+                                </tr>
+                                <tr>
+                                    <td>dimanche</td>
+                                    <td><input type="text" class="form-control" placeholder="non-admission"></td>
+                                    <td><input type="text" class="form-control" placeholder="réacheminement"></td>
+                                    <td><input type="text" class="form-control" placeholder="Autorisé"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box de texte libre : Principales affaires judiciaires -->
+            <div class="section-title">Principales affaires judiciaires du week-end</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="observation-column">
+                        <textarea class="form-control observation-box" placeholder="Listez les principales affaires judiciaires du week-end sous forme de points (ex: - Affaire X traitée, - Procédure Y engagée, ...)" rows="6"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Section Non-admission & réacheminement -->
-        <div class="section-title">Non-admission & réacheminement</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>non-admission</th>
-                                <th>réacheminement</th>
-                                <th>Autorisé à entrer sur le territoire national</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>samedi</td>
-                                <td><input type="text" class="form-control" placeholder="non-admission"></td>
-                                <td><input type="text" class="form-control" placeholder="réacheminement"></td>
-                                <td><input type="text" class="form-control" placeholder="Autorisé"></td>
-                            </tr>
-                            <tr>
-                                <td>dimanche</td>
-                                <td><input type="text" class="form-control" placeholder="non-admission"></td>
-                                <td><input type="text" class="form-control" placeholder="réacheminement"></td>
-                                <td><input type="text" class="form-control" placeholder="Autorisé"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations synthèse du week-end</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
+        <!-- Partie 2 : Synthèse hebdomadaire -->
+        <div class="synthesis-section">
+            <h2 class="text-center mb-4">Synthèse hebdomadaire</h2>
 
-        <!-- Section Interventions SDF -->
-        <div class="section-title">Interventions SDF</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Hebdomadaire</th>
-                                <th>Progression annuelle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>données</td>
-                                <td><input type="text" class="form-control" placeholder="Hebdomadaire"></td>
-                                <td><input type="text" class="form-control" placeholder="Progression"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section Interventions SDF -->
+            <div class="section-title">Interventions SDF</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Hebdomadaire</th>
+                                    <th>Progression annuelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>données</td>
+                                    <td><input type="text" class="form-control" placeholder="Hebdomadaire"></td>
+                                    <td><input type="text" class="form-control" placeholder="Progression"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section lutte contre la délinquance de voie publique -->
-        <div class="section-title">lutte contre la délinquance de voie publique racoleurs/emballeurs</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>contrôle</th>
-                                <th>AFD</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>emballeur</td>
-                                <td><input type="text" class="form-control" placeholder="Contrôle"></td>
-                                <td><input type="text" class="form-control" placeholder="AFD"></td>
-                            </tr>
-                            <tr>
-                                <td>racoleur</td>
-                                <td><input type="text" class="form-control" placeholder="Contrôle"></td>
-                                <td><input type="text" class="form-control" placeholder="AFD"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section lutte contre la délinquance de voie publique -->
+            <div class="section-title">lutte contre la délinquance de voie publique racoleurs/emballeurs</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>contrôle</th>
+                                    <th>AFD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>emballeur</td>
+                                    <td><input type="text" class="form-control" placeholder="Contrôle"></td>
+                                    <td><input type="text" class="form-control" placeholder="AFD"></td>
+                                </tr>
+                                <tr>
+                                    <td>racoleur</td>
+                                    <td><input type="text" class="form-control" placeholder="Contrôle"></td>
+                                    <td><input type="text" class="form-control" placeholder="AFD"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section T4 : salle de prière musulmane -->
-        <div class="section-title">T4 : salle de prière musulmane – offices religieux du vendredi</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>nombre de fidèles</th>
-                                <th>nombre d’offices</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><input type="text" class="form-control" placeholder="Fidèles"></td>
-                                <td><input type="text" class="form-control" placeholder="Offices"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section T4 : salle de prière musulmane -->
+            <div class="section-title">T4 : salle de prière musulmane – offices religieux du vendredi</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>nombre de fidèles</th>
+                                    <th>nombre d’offices</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="text" class="form-control" placeholder="Fidèles"></td>
+                                    <td><input type="text" class="form-control" placeholder="Offices"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section Bagages abandonnés -->
-        <div class="section-title">Bagages abandonnés</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>nombre</th>
-                                <th>dont suspect</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><input type="text" class="form-control" placeholder="Total"></td>
-                                <td><input type="text" class="form-control" placeholder="Suspects"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section Bagages abandonnés -->
+            <div class="section-title">Bagages abandonnés</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>nombre</th>
+                                    <th>dont suspect</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="text" class="form-control" placeholder="Total"></td>
+                                    <td><input type="text" class="form-control" placeholder="Suspects"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section TSO -->
-        <div class="section-title">TSO</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>constat de manquement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>nombre</td>
-                                <td><input type="text" class="form-control" placeholder="Nombre"></td>
-                            </tr>
-                            <tr>
-                                <td>réussi</td>
-                                <td><input type="text" class="form-control" placeholder="Réussi"></td>
-                            </tr>
-                            <tr>
-                                <td>échec</td>
-                                <td><input type="text" class="form-control" placeholder="Échec"></td>
-                            </tr>
-                            <tr>
-                                <td>Progression annuelle</td>
-                                <td><input type="text" class="form-control" placeholder="Progression"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section TSO -->
+            <div class="section-title">TSO</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>constat de manquement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>nombre</td>
+                                    <td><input type="text" class="form-control" placeholder="Nombre"></td>
+                                </tr>
+                                <tr>
+                                    <td>réussi</td>
+                                    <td><input type="text" class="form-control" placeholder="Réussi"></td>
+                                </tr>
+                                <tr>
+                                    <td>échec</td>
+                                    <td><input type="text" class="form-control" placeholder="Échec"></td>
+                                </tr>
+                                <tr>
+                                    <td>Progression annuelle</td>
+                                    <td><input type="text" class="form-control" placeholder="Progression"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section Zone d’attente -->
-        <div class="section-title">Zone d’attente</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>état journalier :</th>
-                                <td><input type="text" class="form-control" placeholder="État"></td>
-                            </tr>
-                        </thead>
-                    </table>
+            <!-- Section Zone d’attente -->
+            <div class="section-title">Zone d’attente</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>état journalier :</th>
+                                    <td><input type="text" class="form-control" placeholder="État"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section Données statistiques -->
-        <div class="section-title">Données statistiques</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Hebdomadaire</th>
-                                <th>Mensuel</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>INAD</td>
-                                <td><input type="text" class="form-control" placeholder="Hebdo"></td>
-                                <td><input type="text" class="form-control" placeholder="Mensuel"></td>
-                            </tr>
-                            <tr>
-                                <td>fiches</td>
-                                <td><input type="text" class="form-control" placeholder="Hebdo"></td>
-                                <td><input type="text" class="form-control" placeholder="Mensuel"></td>
-                            </tr>
-                            <tr>
-                                <td>droits chancellerie</td>
-                                <td><input type="text" class="form-control" placeholder="Hebdo"></td>
-                                <td><input type="text" class="form-control" placeholder="Mensuel"></td>
-                            </tr>
-                            <tr>
-                                <td>Porteurs de faux</td>
-                                <td><input type="text" class="form-control" placeholder="Hebdo"></td>
-                                <td><input type="text" class="form-control" placeholder="Mensuel"></td>
-                            </tr>
-                            <tr>
-                                <td>OQTF</td>
-                                <td><input type="text" class="form-control" placeholder="Hebdo"></td>
-                                <td><input type="text" class="form-control" placeholder="Mensuel"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section Données statistiques -->
+            <div class="section-title">Données statistiques</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Hebdomadaire</th>
+                                    <th>Mensuel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>INAD</td>
+                                    <td><input type="text" class="form-control" placeholder="Hebdo"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mensuel"></td>
+                                </tr>
+                                <tr>
+                                    <td>fiches</td>
+                                    <td><input type="text" class="form-control" placeholder="Hebdo"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mensuel"></td>
+                                </tr>
+                                <tr>
+                                    <td>droits chancellerie</td>
+                                    <td><input type="text" class="form-control" placeholder="Hebdo"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mensuel"></td>
+                                </tr>
+                                <tr>
+                                    <td>Porteurs de faux</td>
+                                    <td><input type="text" class="form-control" placeholder="Hebdo"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mensuel"></td>
+                                </tr>
+                                <tr>
+                                    <td>OQTF</td>
+                                    <td><input type="text" class="form-control" placeholder="Hebdo"></td>
+                                    <td><input type="text" class="form-control" placeholder="Mensuel"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section Données judiciaires -->
-        <div class="section-title">Données judiciaires</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>procédures</th>
-                                <th>GAV</th>
-                                <th>rétention judiciaire</th>
-                                <th>rétention administrative</th>
-                                <th>audition libre</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><input type="text" class="form-control" placeholder="Procédures"></td>
-                                <td><input type="text" class="form-control" placeholder="GAV"></td>
-                                <td><input type="text" class="form-control" placeholder="Judiciaire"></td>
-                                <td><input type="text" class="form-control" placeholder="Administrative"></td>
-                                <td><input type="text" class="form-control" placeholder="Audition"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Section Données judiciaires -->
+            <div class="section-title">Données judiciaires</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>procédures</th>
+                                    <th>GAV</th>
+                                    <th>rétention judiciaire</th>
+                                    <th>rétention administrative</th>
+                                    <th>audition libre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="text" class="form-control" placeholder="Procédures"></td>
+                                    <td><input type="text" class="form-control" placeholder="GAV"></td>
+                                    <td><input type="text" class="form-control" placeholder="Judiciaire"></td>
+                                    <td><input type="text" class="form-control" placeholder="Administrative"></td>
+                                    <td><input type="text" class="form-control" placeholder="Audition"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section Données contraventionnelles -->
-        <div class="section-title">Données contraventionnelles</div>
-        <div class="row form-section">
-            <div class="col-lg-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Nombre de PVE</th>
-                                <th>_stationnement</th>
-                                <th>_circulation</th>
-                                <th>Immobilisation</th>
-                                <th>AFD</th>
-                                <th>IPM</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><input type="text" class="form-control" placeholder="PVE"></td>
-                                <td><input type="text" class="form-control" placeholder="Stationnement"></td>
-                                <td><input type="text" class="form-control" placeholder="Circulation"></td>
-                                <td><input type="text" class="form-control" placeholder="Immobilisation"></td>
-                                <td><input type="text" class="form-control" placeholder="AFD"></td>
-                                <td><input type="text" class="form-control" placeholder="IPM"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="observation-column">
-                    <h5 class="mb-3">Observations</h5>
-                    <textarea class="form-control observation-box" placeholder="Saisissez vos observations ici..."></textarea>
+            <!-- Section Données contraventionnelles -->
+            <div class="section-title">Données contraventionnelles</div>
+            <div class="row form-section">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nombre de PVE</th>
+                                    <th>_stationnement</th>
+                                    <th>_circulation</th>
+                                    <th>Immobilisation</th>
+                                    <th>AFD</th>
+                                    <th>IPM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="text" class="form-control" placeholder="PVE"></td>
+                                    <td><input type="text" class="form-control" placeholder="Stationnement"></td>
+                                    <td><input type="text" class="form-control" placeholder="Circulation"></td>
+                                    <td><input type="text" class="form-control" placeholder="Immobilisation"></td>
+                                    <td><input type="text" class="form-control" placeholder="AFD"></td>
+                                    <td><input type="text" class="form-control" placeholder="IPM"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -636,61 +604,4 @@
             doc.text("Compte rendu réunion de service", 105, 20, { align: 'center' });
             
             // Ajout de la date
-            const date = document.getElementById('reportDate').value;
-            doc.setFontSize(12);
-            doc.text(`Date du rapport : ${date}`, 105, 30, { align: 'center' });
-            
-            // Ajout du contenu (exemple simplifié)
-            doc.setFontSize(14);
-            doc.text("Section Trafic passagers", 20, 40);
-            doc.setFontSize(10);
-            doc.text("Données saisies et observations...", 20, 50);
-            
-            // Sauvegarde du PDF
-            doc.save(`rapport_${date}.pdf`);
-            
-            alert("PDF généré avec succès !");
-        }
-
-        function generateODS() {
-            // Création d'un tableau de données
-            const data = [
-                ['Section', 'Données', 'Observations'],
-                ['Trafic passagers', 'samedi: estimé, réalisé...', 'Observations...'],
-                ['Non-admission', 'samedi: non-admission, réacheminement...', 'Observations...']
-            ];
-            
-            // Création du classeur Excel
-            const wb = XLSX.utils.book_new();
-            const ws = XLSX.utils.aoa_to_sheet(data);
-            
-            // Ajout de la feuille au classeur
-            XLSX.utils.book_append_sheet(wb, ws, "Rapport");
-            
-            // Génération et téléchargement
-            XLSX.writeFile(wb, `rapport_${document.getElementById('reportDate').value}.ods`);
-            
-            alert("Fichier ODS généré avec succès !");
-        }
-
-        function downloadAsCSV() {
-            // Création de données CSV (exemple simplifié)
-            const csvContent = "data:text/csv;charset=utf-8," 
-                + "Section,Données,Observations\n"
-                + "Trafic passagers,samedi: estimé, réalisé...,Observations...\n"
-                + "Non-admission,samedi: non-admission, réacheminement...,Observations...";
-            
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `rapport_${document.getElementById('reportDate').value}.csv`);
-            document.body.appendChild(link);
-            
-            link.click();
-            document.body.removeChild(link);
-            
-            alert("Fichier CSV téléchargé avec succès !");
-        }
-    </script>
-</body>
-</html>
+            const date = document.getElementById('reportDate').
