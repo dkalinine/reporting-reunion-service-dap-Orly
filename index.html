@@ -262,30 +262,24 @@
             <div class="row form-section">
                 <div class="col-lg-12">
                     <div class="observation-column">
-                        <div class="bullet-list">
-                            <p><strong>Affaire 1 :</strong></p>
-                            <ul>
-                                <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
-                                <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
-                                <li><strong>Résumé des faits :</strong> <textarea class="form-control observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
-                                <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
-                            </ul>
+                        <div class="bullet-list" id="judicial-affairs-container">
+                            <!-- Affaire par défaut -->
+                            <div class="judicial-affair-item">
+                                <p><strong>Affaire 1 :</strong></p>
+                                <ul>
+                                    <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
+                                    <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
+                                    <li><strong>Résumé des faits :</strong> <textarea class="form-control observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
+                                    <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
+                                </ul>
+                            </div>
                             
-                            <p><strong>Affaire 2 :</strong></p>
-                            <ul>
-                                <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
-                                <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
-                                <li><strong>Résumé des faits :</strong> <textarea class="form-control observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
-                                <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
-                            </ul>
-                            
-                            <p><strong>Affaire 3 :</strong></p>
-                            <ul>
-                                <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
-                                <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
-                                <li><strong>Résumé des faits :</strong> <textarea class="form-control observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
-                                <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
-                            </ul>
+                            <!-- Bouton pour ajouter une nouvelle affaire -->
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addJudicialAffair()">
+                                    <i class="fas fa-plus"></i> Ajouter une affaire
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -627,6 +621,29 @@
         function downloadAsCSV() {
             // Implémentation simplifiée pour CSV
             alert("Export CSV simulé.");
+        }
+
+        // Fonction pour ajouter une nouvelle affaire judiciaire
+        let affairCount = 1;
+
+        function addJudicialAffair() {
+            affairCount++;
+            const container = document.getElementById('judicial-affairs-container');
+            
+            const newAffairDiv = document.createElement('div');
+            newAffairDiv.className = 'judicial-affair-item';
+            newAffairDiv.innerHTML = `
+                <p><strong>Affaire ${affairCount} :</strong></p>
+                <ul>
+                    <li><strong>Nature des faits :</strong> <input type="text" class="form-control" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
+                    <li><strong>Lieu :</strong> <input type="text" class="form-control" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
+                    <li><strong>Résumé des faits :</strong> <textarea class="form-control observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
+                    <li><strong>Suites judiciaires :</strong> <input type="text" class="form-control" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
+                </ul>
+            `;
+            
+            // Insérer avant le bouton d'ajout
+            container.insertBefore(newAffairDiv, container.lastElementChild);
         }
     </script>
 </body>
