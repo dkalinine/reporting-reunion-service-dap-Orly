@@ -48,6 +48,22 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+        .btn-primary {
+            background-color: #0050ef;
+            border-color: #0050ef;
+        }
+        .btn-primary:hover {
+            background-color: #0040bf;
+            border-color: #0040bf;
+        }
+        .btn-secondary {
+            background-color: #666666;
+            border-color: #666666;
+        }
+        .btn-success {
+            background-color: #007c3d;
+            border-color: #007c3d;
+        }
         .container {
             background-color: white;
             border-radius: 8px;
@@ -60,6 +76,10 @@
             border-radius: 8px;
             margin-top: 30px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .export-btn {
+            margin: 5px;
+            padding: 10px 15px;
         }
         .footer-note {
             font-size: 0.85rem;
@@ -169,182 +189,6 @@
             .header-text h1 {
                 font-size: 1.5rem;
             }
-        }
-
-        /* =============================================
-           NOUVEAUX BOUTONS STYLISÉS
-        ============================================= */
-
-        /* Bouton Ajouter une affaire */
-        .btn-add-affair {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            padding: 10px 22px;
-            background: linear-gradient(135deg, #0050ef, #0078d4);
-            color: white !important;
-            border: none;
-            border-radius: 25px;
-            font-size: 0.88rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(0, 80, 239, 0.32);
-            transition: all 0.22s ease;
-            letter-spacing: 0.3px;
-            text-decoration: none;
-        }
-        .btn-add-affair:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(0, 80, 239, 0.45);
-            background: linear-gradient(135deg, #003fcc, #005faa);
-            color: white !important;
-        }
-        .btn-add-affair:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(0, 80, 239, 0.3);
-        }
-        .btn-add-affair .btn-icon-circle {
-            width: 22px;
-            height: 22px;
-            background: rgba(255,255,255,0.28);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-            line-height: 1;
-            flex-shrink: 0;
-        }
-
-        /* Bouton Supprimer une affaire */
-        .btn-remove-affair {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 13px;
-            background: transparent;
-            color: #b72828;
-            border: 1.5px solid #e05252;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-        .btn-remove-affair:hover {
-            background: #fff0f0;
-            border-color: #b72828;
-            color: #8a1c1c;
-        }
-        .btn-remove-affair svg {
-            width: 13px;
-            height: 13px;
-            flex-shrink: 0;
-        }
-
-        /* Boutons d'export */
-        .export-buttons-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-            margin-top: 16px;
-        }
-        .btn-export {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 11px 22px;
-            border: 1.5px solid transparent;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.22s ease;
-            letter-spacing: 0.35px;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-        .btn-export:hover {
-            transform: translateY(-2px);
-        }
-        .btn-export:active {
-            transform: translateY(0);
-        }
-        .btn-export .export-icon {
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: 900;
-            flex-shrink: 0;
-        }
-        /* PDF – rouge */
-        .btn-export-pdf {
-            background: #fff4f0;
-            color: #b72828;
-            border-color: #f5c5b8;
-        }
-        .btn-export-pdf .export-icon { background: #c0392b; color: white; }
-        .btn-export-pdf:hover {
-            background: #fde8e0;
-            box-shadow: 0 5px 16px rgba(192,57,43,0.2);
-        }
-        /* ODS/Excel – vert */
-        .btn-export-ods {
-            background: #f0fff5;
-            color: #1a6e30;
-            border-color: #b0dfc0;
-        }
-        .btn-export-ods .export-icon { background: #1e7e34; color: white; }
-        .btn-export-ods:hover {
-            background: #d8f5e3;
-            box-shadow: 0 5px 16px rgba(30,126,52,0.2);
-        }
-        /* CSV – bleu ardoise */
-        .btn-export-csv {
-            background: #f0f4ff;
-            color: #1a3faa;
-            border-color: #c5d0f5;
-        }
-        .btn-export-csv .export-icon { background: #1a4fbd; color: white; }
-        .btn-export-csv:hover {
-            background: #dce6ff;
-            box-shadow: 0 5px 16px rgba(26,79,189,0.2);
-        }
-
-        /* Bouton Enregistrer */
-        .btn-save-report {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 13px 32px;
-            background: linear-gradient(135deg, #006f40, #00a35c);
-            color: white !important;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 5px 18px rgba(0, 111, 64, 0.35);
-            transition: all 0.22s ease;
-            letter-spacing: 0.4px;
-            text-decoration: none;
-        }
-        .btn-save-report:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 111, 64, 0.45);
-            background: linear-gradient(135deg, #005530, #00884c);
-            color: white !important;
-        }
-        .btn-save-report:active {
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -491,4 +335,76 @@
                         <div class="observation-column">
                             <div class="bullet-list" id="judicial-affairs-container">
                                 <div class="judicial-affair-item" id="affair-1">
-                                    
+                                    <p><strong>Affaire 1 :</strong>
+                                        <button type="button" class="fr-btn fr-btn--sm fr-btn--secondary fr-btn--icon-left" onclick="removeJudicialAffair(1)">
+                                            <i class="fr-icon-delete-line" aria-hidden="true"></i> Supprimer
+                                        </button>
+                                    </p>
+                                    <ul>
+                                        <li><strong>Nature des faits :</strong> <input type="text" class="fr-input" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
+                                        <li><strong>Lieu :</strong> <input type="text" class="fr-input" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
+                                        <li><strong>Résumé des faits :</strong> <textarea class="fr-input observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
+                                        <li><strong>Suites judiciaires :</strong> <input type="text" class="fr-input" placeholder="Ex: Laissé libre, classement, mise en examen, etc."></li>
+                                    </ul>
+                                </div>
+                                <div class="mt-3">
+                                    <button type="button" class="fr-btn fr-btn--sm fr-btn--primary fr-btn--icon-left" onclick="addJudicialAffair()">
+                                        <i class="fr-icon-add-line" aria-hidden="true"></i> Ajouter une affaire
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label for="generalJudicialObservations" class="fr-label fw-bold">Observations générales du week-end :</label>
+                                <textarea id="generalJudicialObservations" class="fr-input observation-box" placeholder="Saisissez ici vos observations générales sur le week-end écoulé..." rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Partie 2 : Synthèse hebdomadaire -->
+            <div class="section" id="weekly">
+                <div class="synthesis-section">
+                    <h2 class="fr-h2 text-center">Synthèse hebdomadaire</h2>
+                    <!-- Section Interventions SDF -->
+                    <div class="section-title">Interventions SDF</div>
+                    <div class="form-section">
+                        <div class="fr-table">
+                            <table class="fr-table fr-table--bordered fr-table--no-caption">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Hebdomadaire</th>
+                                        <th scope="col">Progression annuelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>données</td>
+                                        <td><input type="text" class="fr-input" placeholder="Hebdomadaire"></td>
+                                        <td><input type="text" class="fr-input" placeholder="Progression"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Section lutte contre la délinquance de voie publique -->
+                    <div class="section-title">lutte contre la délinquance de voie publique racoleurs/emballeurs</div>
+                    <div class="form-section">
+                        <div class="fr-table">
+                            <table class="fr-table fr-table--bordered fr-table--no-caption">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">contrôle</th>
+                                        <th scope="col">AFD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>emballeur</td>
+                                        <td><input type="text" class="fr-input" placeholder="Contrôle"></td>
+                                        <td><input type="text" class="fr-input" placeholder="AFD"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>racoleur</td>
+                                        <td><input type="text" class="fr-input" place
