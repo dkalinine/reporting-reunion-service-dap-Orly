@@ -1,849 +1,860 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compte rendu réunion de service</title>
-    <!-- DSFR -->
-    <link href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@v1.12.1/dist/dsfr.min.css" rel="stylesheet">
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .observation-box {
-            min-height: 100px;
-            resize: vertical;
-        }
-        .section-title {
-            background-color: #f0f8ff;
-            color: #34495e;
-            padding: 10px;
-            margin-top: 30px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .form-section {
-            margin-bottom: 30px;
-        }
-        .observation-column {
-            background-color: #eaf4ff;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid #a3c9ff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .synthesis-section {
-            background-color: #f0f8ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        .table-container {
-            overflow-x: auto;
-        }
-        .date-header {
-            background-color: #e0f0ff;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .btn-primary {
-            background-color: #0050ef;
-            border-color: #0050ef;
-        }
-        .btn-primary:hover {
-            background-color: #0040bf;
-            border-color: #0040bf;
-        }
-        .btn-secondary {
-            background-color: #666666;
-            border-color: #666666;
-        }
-        .btn-success {
-            background-color: #007c3d;
-            border-color: #007c3d;
-        }
-        .container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            padding: 25px;
-        }
-        .export-buttons {
-            background-color: #f0f8ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        .export-btn {
-            margin: 5px;
-            padding: 10px 15px;
-        }
-        .footer-note {
-            font-size: 0.85rem;
-            color: #7f8c8d;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #d0e7ff;
-        }
-        .logo-container {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-        }
-        .logo-container img {
-            max-height: 80px;
-            width: auto;
-        }
-        .header-text {
-            flex-grow: 1;
-            text-align: center;
-            margin: 0 20px;
-        }
-        .header-text h1 {
-            margin: 0;
-            font-size: 1.8rem;
-        }
-        .header-text p {
-            margin: 5px 0 0 0;
-            color: #7f8c8d;
-            font-size: 1rem;
-        }
-        .bullet-list {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-        .bullet-list li {
-            margin-bottom: 5px;
-        }
-        /* Carousel Navigation */
-        .carousel-nav {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .nav-tabs-carousel {
-            display: flex;
-            overflow-x: auto;
-            gap: 5px;
-            padding: 5px;
-            scrollbar-width: none;
-        }
-        .nav-tabs-carousel::-webkit-scrollbar {
-            display: none;
-        }
-        .nav-tab {
-            padding: 10px 15px;
-            background-color: #d0e7ff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .nav-tab.active {
-            background-color: #0050ef;
-            color: white;
-        }
-        .nav-btn {
-            padding: 10px 15px;
-            background-color: #e0f0ff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .nav-btn:hover {
-            background-color: #c0e0ff;
-        }
-        /* Section carousel */
-        .section {
-            display: none;
-        }
-        .section.active {
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .logo-container {
-                margin-bottom: 10px;
-            }
-            .header-text {
-                margin: 10px 0;
-            }
-            .header-text h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compte rendu réunion de service</title>
+
+  <!-- DSFR -->
+  <link href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@v1.12.1/dist/dsfr.min.css" rel="stylesheet">
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 25px;
+      margin-top: 20px;
+    }
+    .section-title {
+      background-color: #eaf4ff;
+      color: #0050ef;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .observation-column {
+      background-color: #eaf4ff;
+      padding: 15px;
+      border-radius: 6px;
+      border-left: 4px solid #a3c9ff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .synthesis-section {
+      background-color: #f0f8ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .date-header {
+      background-color: #e0f0ff;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .export-buttons {
+      background-color: #f0f8ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .footer-note {
+      font-size: 0.85rem;
+      color: #7f8c8d;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #d0e7ff;
+    }
+    .logo-container {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      max-height: 80px;
+      width: auto;
+    }
+    .header-text {
+      flex-grow: 1;
+      text-align: center;
+      margin: 0 20px;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .header-text p {
+      margin: 5px 0 0 0;
+      color: #7f8c8d;
+      font-size: 1rem;
+    }
+    .bullet-list {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    .bullet-list li {
+      margin-bottom: 5px;
+    }
+    /* Carousel Navigation */
+    .carousel-nav {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .nav-tabs-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 5px;
+      padding: 5px;
+      scrollbar-width: none;
+    }
+    .nav-tabs-carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .nav-tab {
+      padding: 10px 15px;
+      background-color: #d0e7ff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-tab.active {
+      background-color: #0050ef;
+      color: white;
+    }
+    .nav-btn {
+      padding: 10px 15px;
+      background-color: #e0f0ff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .nav-btn:hover {
+      background-color: #c0e0ff;
+    }
+    /* Section carousel */
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .logo-container {
+        margin-bottom: 10px;
+      }
+      .header-text {
+        margin: 10px 0;
+      }
+      .header-text h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body class="fr-background-alt">
-    <div class="container fr-py-4">
-        <!-- En-tête avec logos aux côtés du titre -->
-        <div class="header-container">
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/dkalinine/reporting-reunion-service-dap-Orly/main/PAF%20dap.png" alt="Logo Ministère de l'Intérieur">
-            </div>
-            <div class="header-text">
-                <h1>Compte rendu réunion de service</h1>
-                <p>Système de gestion des rapports de service</p>
-            </div>
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/dkalinine/reporting-reunion-service-dap-Orly/main/PAF%20dap.png" alt="Logo Administration Territoriale">
-            </div>
-        </div>
-        <!-- Date de saisie -->
-        <div class="date-header">
-            <div class="fr-grid-row fr-grid-row--center">
-                <div class="fr-col-12 fr-col-md-6">
-                    <label for="reportDate" class="fr-label fw-bold">Date du rapport :</label>
-                    <input type="date" class="fr-input" id="reportDate" required>
-                </div>
-            </div>
-        </div>
-        <!-- Navigation Carousel -->
-        <div class="carousel-nav">
-            <div class="nav-container">
-                <button class="nav-btn prev-btn fr-btn fr-btn--secondary" onclick="changeSection(-1)">&#10094; Précédent</button>
-                <div class="nav-tabs-carousel">
-                    <button class="nav-tab active" data-target="weekend">Synthèse du week-end</button>
-                    <button class="nav-tab" data-target="weekly">Synthèse hebdomadaire</button>
-                    <button class="nav-tab" data-target="dct">DCT</button>
-                    <button class="nav-tab" data-target="dist">DIST</button>
-                    <button class="nav-tab" data-target="etatmaj">Etat-major</button>
-                    <button class="nav-tab" data-target="daf">DAF</button>
-                    <button class="nav-tab" data-target="commandes">Commandes</button>
-                    <button class="nav-tab" data-target="agenda">Agenda de la semaine</button>
-                </div>
-                <button class="nav-btn next-btn fr-btn fr-btn--secondary" onclick="changeSection(1)">Suivant &#10095;</button>
-            </div>
-        </div>
-        <!-- Contenu des sections -->
-        <div class="tab-content" id="reportTabContent">
-            <!-- Partie 1 : Synthèse du week-end -->
-            <div class="section active" id="weekend">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">Synthèse du week-end</h2>
-                    <!-- Section Trafic passagers -->
-                    <div class="section-title">Trafic passagers</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Nombre de PAX estimés</th>
-                                        <th scope="col">Nombre de PAX réalisés</th>
-                                        <th scope="col">Nombre de passages frontières</th>
-                                        <th scope="col">nombre de mouvements</th>
-                                        <th scope="col">dont à l'international</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>samedi</td>
-                                        <td><input type="text" class="fr-input" placeholder="Estimé"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Réalisé"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Frontières"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mouvements"></td>
-                                        <td><input type="text" class="fr-input" placeholder="International"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>dimanche</td>
-                                        <td><input type="text" class="fr-input" placeholder="Estimé"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Réalisé"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Frontières"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mouvements"></td>
-                                        <td><input type="text" class="fr-input" placeholder="International"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section Non-admission & réacheminement -->
-                    <div class="section-title">Non-admission & réacheminement</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">non-admission</th>
-                                        <th scope="col">réacheminement</th>
-                                        <th scope="col">Autorisé à entrer sur le territoire national</th>
-                                        <th scope="col">en cours</th>
-                                        <th scope="col">total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>samedi</td>
-                                        <td><input type="text" class="fr-input" placeholder="non-admission"></td>
-                                        <td><input type="text" class="fr-input" placeholder="réacheminement"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Autorisé"></td>
-                                        <td>
-                                            <div>
-                                                <label for="samedi-jour-franc" class="fr-label">jour franc</label>
-                                                <input type="text" class="fr-input" id="samedi-jour-franc" placeholder="jour franc">
-                                            </div>
-                                            <div>
-                                                <label for="samedi-demande-asile" class="fr-label">demande d'asile</label>
-                                                <input type="text" class="fr-input" id="samedi-demande-asile" placeholder="demande d'asile">
-                                            </div>
-                                        </td>
-                                        <td class="daily-total">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>dimanche</td>
-                                        <td><input type="text" class="fr-input" placeholder="non-admission"></td>
-                                        <td><input type="text" class="fr-input" placeholder="réacheminement"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Autorisé"></td>
-                                        <td>
-                                            <div>
-                                                <label for="dimanche-jour-franc" class="fr-label">jour franc</label>
-                                                <input type="text" class="fr-input" id="dimanche-jour-franc" placeholder="jour franc">
-                                            </div>
-                                            <div>
-                                                <label for="dimanche-demande-asile" class="fr-label">demande d'asile</label>
-                                                <input type="text" class="fr-input" id="dimanche-demande-asile" placeholder="demande d'asile">
-                                            </div>
-                                        </td>
-                                        <td class="daily-total">0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Box de texte libre : Principales affaires judiciaires -->
-                    <div class="section-title">Principales affaires judiciaires du week-end</div>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <div class="bullet-list" id="judicial-affairs-container">
-                                <div class="judicial-affair-item" id="affair-1">
-                                    <p><strong>Affaire 1 :</strong>
-                                        <button type="button" class="fr-btn fr-btn--sm fr-btn--secondary fr-btn--icon-left" onclick="removeJudicialAffair(1)">
-                                            <i class="fr-icon-delete-line" aria-hidden="true"></i> Supprimer
-                                        </button>
-                                    </p>
-                                    <ul>
-                                        <li><strong>Nature des faits :</strong> <input type="text" class="fr-input" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
-                                        <li><strong>Lieu :</strong> <input type="text" class="fr-input" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
-                                        <li><strong>Résumé des faits :</strong> <textarea class="fr-input observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
-                                        <li><strong>Suites judiciaires :</strong> <input type="text" class="fr-input" placeholder="Ex: Laissé libre, classement, mise en examen, etc."></li>
-                                    </ul>
-                                </div>
-                                <div class="mt-3">
-                                    <button type="button" class="fr-btn fr-btn--sm fr-btn--primary fr-btn--icon-left" onclick="addJudicialAffair()">
-                                        <i class="fr-icon-add-line" aria-hidden="true"></i> Ajouter une affaire
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <label for="generalJudicialObservations" class="fr-label fw-bold">Observations générales du week-end :</label>
-                                <textarea id="generalJudicialObservations" class="fr-input observation-box" placeholder="Saisissez ici vos observations générales sur le week-end écoulé..." rows="3"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 2 : Synthèse hebdomadaire -->
-            <div class="section" id="weekly">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">Synthèse hebdomadaire</h2>
-                    <!-- Section Interventions SDF -->
-                    <div class="section-title">Interventions SDF</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Hebdomadaire</th>
-                                        <th scope="col">Progression annuelle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>données</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdomadaire"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Progression"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section lutte contre la délinquance de voie publique -->
-                    <div class="section-title">lutte contre la délinquance de voie publique racoleurs/emballeurs</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">contrôle</th>
-                                        <th scope="col">AFD</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>emballeur</td>
-                                        <td><input type="text" class="fr-input" placeholder="Contrôle"></td>
-                                        <td><input type="text" class="fr-input" placeholder="AFD"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>racoleur</td>
-                                        <td><input type="text" class="fr-input" placeholder="Contrôle"></td>
-                                        <td><input type="text" class="fr-input" placeholder="AFD"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section T4 : salle de prière musulmane -->
-                    <div class="section-title">T4 : salle de prière musulmane – offices religieux du vendredi</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">nombre de fidèles</th>
-                                        <th scope="col">nombre d’offices</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="text" class="fr-input" placeholder="Fidèles"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Offices"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section Bagages abandonnés -->
-                    <div class="section-title">Bagages abandonnés</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">nombre</th>
-                                        <th scope="col">dont suspect</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="text" class="fr-input" placeholder="Total"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Suspects"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section TSO -->
-                    <div class="section-title">TSO</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">constat de manquement</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>nombre</td>
-                                        <td><input type="text" class="fr-input" placeholder="Nombre"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>réussi</td>
-                                        <td><input type="text" class="fr-input" placeholder="Réussi"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>échec</td>
-                                        <td><input type="text" class="fr-input" placeholder="Échec"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Progression annuelle</td>
-                                        <td><input type="text" class="fr-input" placeholder="Progression"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section Zone d’attente -->
-                    <div class="section-title">Zone d’attente</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th>état journalier :</th>
-                                        <td><input type="text" class="fr-input" placeholder="État"></td>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section Données statistiques -->
-                    <div class="section-title">Données statistiques</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Hebdomadaire</th>
-                                        <th scope="col">Mensuel</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>INAD</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>fiches</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>droits chancellerie</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Porteurs de faux</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>OQTF</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Refus d'escale ultra-marine</td>
-                                        <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section Données judiciaires -->
-                    <div class="section-title">Données judiciaires</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">procédures</th>
-                                        <th scope="col">GAV</th>
-                                        <th scope="col">rétention judiciaire</th>
-                                        <th scope="col">rétention administrative</th>
-                                        <th scope="col">audition libre</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="text" class="fr-input" placeholder="Procédures"></td>
-                                        <td><input type="text" class="fr-input" placeholder="GAV"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Judiciaire"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Administrative"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Audition"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Section Données contraventionnelles -->
-                    <div class="section-title">Données contraventionnelles</div>
-                    <div class="form-section">
-                        <div class="fr-table">
-                            <table class="fr-table fr-table--bordered fr-table--no-caption">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Nombre de PVE</th>
-                                        <th scope="col">Infractions au stationnement</th>
-                                        <th scope="col">Infractions à la circulation</th>
-                                        <th scope="col">Immobilisation</th>
-                                        <th scope="col">AFD</th>
-                                        <th scope="col">IPM</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="text" class="fr-input" placeholder="PVE"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Stationnement"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Circulation"></td>
-                                        <td><input type="text" class="fr-input" placeholder="Immobilisation"></td>
-                                        <td><input type="text" class="fr-input" placeholder="AFD"></td>
-                                        <td><input type="text" class="fr-input" placeholder="IPM"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Observations semaine -->
-                    <div class="section-title">Observations semaine écoulée</div>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la semaine écoulée..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 3 : DCT -->
-            <div class="section" id="dct">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">DCT</h2>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la DCT..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 4 : DIST -->
-            <div class="section" id="dist">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">DIST</h2>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la DIST..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 5 : Etat-major -->
-            <div class="section" id="etatmaj">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">Etat-major</h2>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant l'Etat-major..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 5.5 : DAF -->
-            <div class="section" id="daf">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">DAF</h2>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la DAF..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 6 : Commandes -->
-            <div class="section" id="commandes">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">Commandes</h2>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant les commandes..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partie 7 : Agenda de la semaine -->
-            <div class="section" id="agenda">
-                <div class="synthesis-section">
-                    <h2 class="fr-h2 text-center">Agenda de la semaine</h2>
-                    <div class="form-section">
-                        <div class="observation-column">
-                            <textarea class="fr-input observation-box" placeholder="Saisissez ici les événements ou actions planifiés pour la semaine..." rows="6"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Boutons d'export -->
-        <div class="export-buttons">
-            <h3 class="fr-h3 text-center"><i class="fr-icon-file-export-fill"></i> Exporter le rapport</h3>
-            <div class="text-center">
-                <button class="fr-btn export-btn fr-btn--success" onclick="generatePDF()">
-                    <i class="fr-icon-file-pdf-fill"></i> Générer PDF
-                </button>
-                <button class="fr-btn export-btn fr-btn--secondary" onclick="generateODS()">
-                    <i class="fr-icon-file-excel-fill"></i> Générer ODS
-                </button>
-                <button class="fr-btn export-btn fr-btn--primary" onclick="downloadAsCSV()">
-                    <i class="fr-icon-file-csv-fill"></i> Télécharger CSV
-                </button>
-            </div>
-            <p class="footer-note mt-3">
-                <i class="fr-icon-info-fill"></i> Les fichiers générés incluent toutes les données saisies et les observations
-            </p>
-        </div>
-        <div class="text-center mt-4">
-            <button class="fr-btn btn-lg" onclick="submitForm()">
-                <i class="fr-icon-save-fill"></i> Enregistrer le rapport
-            </button>
-        </div>
+  <div class="container fr-py-4">
+    <!-- En-tête avec logos aux côtés du titre -->
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/dkalinine/reporting-reunion-service-dap-Orly/main/PAF%20dap.png" alt="Logo Ministère de l'Intérieur">
+      </div>
+      <div class="header-text">
+        <h1 class="fr-h1">Compte rendu réunion de service</h1>
+        <p class="fr-text--sm">Système de gestion des rapports de service</p>
+      </div>
+      <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/dkalinine/reporting-reunion-service-dap-Orly/main/PAF%20dap.png" alt="Logo Administration Territoriale">
+      </div>
     </div>
-    <!-- DSFR JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@v1.12.1/dist/dsfr.module.min.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@v1.12.1/dist/dsfr.nomodule.min.js" nomodule type="text/javascript"></script>
-    <!-- jsPDF pour PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- SheetJS pour ODS/Excel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script>
-        // Définir la date d'aujourd'hui par défaut
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('reportDate').value = today;
-        });
-        let currentSectionIndex = 0;
-        const sections = ['weekend', 'weekly', 'dct', 'dist', 'etatmaj', 'daf', 'commandes', 'agenda'];
-        const tabButtons = document.querySelectorAll('.nav-tab');
-        function showSection(index) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            const sectionId = sections[index];
-            document.getElementById(sectionId).style.display = 'block';
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabButtons[index].classList.add('active');
-        }
-        function changeSection(direction) {
-            currentSectionIndex += direction;
-            if (currentSectionIndex < 0) currentSectionIndex = sections.length - 1;
-            if (currentSectionIndex >= sections.length) currentSectionIndex = 0;
-            showSection(currentSectionIndex);
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            showSection(0);
-        });
-        tabButtons.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                currentSectionIndex = index;
-                showSection(currentSectionIndex);
-            });
-        });
-        function submitForm() {
-            const date = document.getElementById('reportDate').value;
-            const generalObservations = document.getElementById('generalJudicialObservations').value;
-            if (!date) {
-                alert("Veuillez sélectionner une date");
-                return;
-            }
-            alert(`Rapport enregistré pour la date : ${date}\nObservations générales : ${generalObservations}`);
-        }
-        function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(22);
-            doc.text("Compte rendu réunion de service", 105, 20, { align: 'center' });
-            const date = document.getElementById('reportDate').value;
-            doc.setFontSize(14);
-            doc.text(`Date : ${date}`, 20, 30);
-            const generalObs = document.getElementById('generalJudicialObservations').value;
-            if (generalObs.trim()) {
-                doc.setFontSize(12);
-                doc.text("Observations générales sur les affaires judiciaires :", 20, 40);
-                const splitText = doc.splitTextToSize(generalObs, 170);
-                doc.text(splitText, 20, 45);
-            }
-            doc.save("rapport_service.pdf");
-        }
-        function generateODS() {
-            alert("Export ODS simulé.");
-        }
-        function downloadAsCSV() {
-            alert("Export CSV simulé.");
-        }
-        let affairCount = 1;
-        function addJudicialAffair() {
-            affairCount++;
-            const container = document.getElementById('judicial-affairs-container');
-            const newAffairDiv = document.createElement('div');
-            newAffairDiv.className = 'judicial-affair-item';
-            newAffairDiv.id = `affair-${affairCount}`;
-            newAffairDiv.innerHTML = `
-                <p><strong>Affaire ${affairCount} :</strong>
-                    <button type="button" class="fr-btn fr-btn--sm fr-btn--secondary fr-btn--icon-left" onclick="removeJudicialAffair(${affairCount})">
-                        <i class="fr-icon-delete-line" aria-hidden="true"></i> Supprimer
+
+    <!-- Date de saisie -->
+    <div class="date-header">
+      <div class="fr-grid-row fr-grid-row--center">
+        <div class="fr-col-12 fr-col-md-6">
+          <label for="reportDate" class="fr-label fw-bold">Date du rapport :</label>
+          <input type="date" class="fr-input" id="reportDate" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Carousel -->
+    <div class="carousel-nav">
+      <div class="nav-container">
+        <button class="nav-btn fr-btn fr-btn--secondary" onclick="changeSection(-1)">&#10094; Précédent</button>
+        <div class="nav-tabs-carousel">
+          <button class="nav-tab active" data-target="weekend">Synthèse du week-end</button>
+          <button class="nav-tab" data-target="weekly">Synthèse hebdomadaire</button>
+          <button class="nav-tab" data-target="dct">DCT</button>
+          <button class="nav-tab" data-target="dist">DIST</button>
+          <button class="nav-tab" data-target="etatmaj">Etat-major</button>
+          <button class="nav-tab" data-target="daf">DAF</button>
+          <button class="nav-tab" data-target="commandes">Commandes</button>
+          <button class="nav-tab" data-target="agenda">Agenda de la semaine</button>
+        </div>
+        <button class="nav-btn fr-btn fr-btn--secondary" onclick="changeSection(1)">Suivant &#10095;</button>
+      </div>
+    </div>
+
+    <!-- Contenu des sections -->
+    <div class="tab-content" id="reportTabContent">
+
+      <!-- Partie 1 : Synthèse du week-end -->
+      <div class="section active" id="weekend">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">Synthèse du week-end</h2>
+
+          <!-- Section Trafic passagers -->
+          <div class="section-title">Trafic passagers</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nombre de PAX estimés</th>
+                    <th scope="col">Nombre de PAX réalisés</th>
+                    <th scope="col">Nombre de passages frontières</th>
+                    <th scope="col">nombre de mouvements</th>
+                    <th scope="col">dont à l'international</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>samedi</td>
+                    <td><input type="text" class="fr-input" placeholder="Estimé"></td>
+                    <td><input type="text" class="fr-input" placeholder="Réalisé"></td>
+                    <td><input type="text" class="fr-input" placeholder="Frontières"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mouvements"></td>
+                    <td><input type="text" class="fr-input" placeholder="International"></td>
+                  </tr>
+                  <tr>
+                    <td>dimanche</td>
+                    <td><input type="text" class="fr-input" placeholder="Estimé"></td>
+                    <td><input type="text" class="fr-input" placeholder="Réalisé"></td>
+                    <td><input type="text" class="fr-input" placeholder="Frontières"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mouvements"></td>
+                    <td><input type="text" class="fr-input" placeholder="International"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section Non-admission & réacheminement -->
+          <div class="section-title">Non-admission & réacheminement</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">non-admission</th>
+                    <th scope="col">réacheminement</th>
+                    <th scope="col">Autorisé à entrer sur le territoire national</th>
+                    <th scope="col">en cours</th>
+                    <th scope="col">total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>samedi</td>
+                    <td><input type="text" class="fr-input" placeholder="non-admission"></td>
+                    <td><input type="text" class="fr-input" placeholder="réacheminement"></td>
+                    <td><input type="text" class="fr-input" placeholder="Autorisé"></td>
+                    <td>
+                      <div>
+                        <label for="samedi-jour-franc" class="fr-label">jour franc</label>
+                        <input type="text" class="fr-input" id="samedi-jour-franc" placeholder="jour franc">
+                      </div>
+                      <div>
+                        <label for="samedi-demande-asile" class="fr-label">demande d'asile</label>
+                        <input type="text" class="fr-input" id="samedi-demande-asile" placeholder="demande d'asile">
+                      </div>
+                    </td>
+                    <td class="daily-total">0</td>
+                  </tr>
+                  <tr>
+                    <td>dimanche</td>
+                    <td><input type="text" class="fr-input" placeholder="non-admission"></td>
+                    <td><input type="text" class="fr-input" placeholder="réacheminement"></td>
+                    <td><input type="text" class="fr-input" placeholder="Autorisé"></td>
+                    <td>
+                      <div>
+                        <label for="dimanche-jour-franc" class="fr-label">jour franc</label>
+                        <input type="text" class="fr-input" id="dimanche-jour-franc" placeholder="jour franc">
+                      </div>
+                      <div>
+                        <label for="dimanche-demande-asile" class="fr-label">demande d'asile</label>
+                        <input type="text" class="fr-input" id="dimanche-demande-asile" placeholder="demande d'asile">
+                      </div>
+                    </td>
+                    <td class="daily-total">0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Box de texte libre : Principales affaires judiciaires -->
+          <div class="section-title">Principales affaires judiciaires du week-end</div>
+          <div class="form-section">
+            <div class="observation-column">
+              <div class="bullet-list" id="judicial-affairs-container">
+                <div class="judicial-affair-item" id="affair-1">
+                  <p><strong>Affaire 1 :</strong>
+                    <button type="button" class="fr-btn fr-btn--sm fr-btn--secondary fr-btn--icon-left" onclick="removeJudicialAffair(1)">
+                      <i class="fr-icon-delete-line" aria-hidden="true"></i> Supprimer
                     </button>
-                </p>
-                <ul>
+                  </p>
+                  <ul>
                     <li><strong>Nature des faits :</strong> <input type="text" class="fr-input" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
                     <li><strong>Lieu :</strong> <input type="text" class="fr-input" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
                     <li><strong>Résumé des faits :</strong> <textarea class="fr-input observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
-                    <li><strong>Suites judiciaires :</strong> <input type="text" class="fr-input" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
-                </ul>
-            `;
-            container.insertBefore(newAffairDiv, container.lastElementChild);
+                    <li><strong>Suites judiciaires :</strong> <input type="text" class="fr-input" placeholder="Ex: Laissé libre, classement, mise en examen, etc."></li>
+                  </ul>
+                </div>
+                <div class="mt-3">
+                  <button type="button" class="fr-btn fr-btn--sm fr-btn--primary fr-btn--icon-left" onclick="addJudicialAffair()">
+                    <i class="fr-icon-add-line" aria-hidden="true"></i> Ajouter une affaire
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <label for="generalJudicialObservations" class="fr-label fw-bold">Observations générales du week-end :</label>
+                <textarea id="generalJudicialObservations" class="fr-input observation-box" placeholder="Saisissez ici vos observations générales sur le week-end écoulé..." rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 2 : Synthèse hebdomadaire -->
+      <div class="section" id="weekly">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">Synthèse hebdomadaire</h2>
+
+          <!-- Section Interventions SDF -->
+          <div class="section-title">Interventions SDF</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Hebdomadaire</th>
+                    <th scope="col">Progression annuelle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>données</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdomadaire"></td>
+                    <td><input type="text" class="fr-input" placeholder="Progression"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section lutte contre la délinquance de voie publique -->
+          <div class="section-title">lutte contre la délinquance de voie publique racoleurs/emballeurs</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">contrôle</th>
+                    <th scope="col">AFD</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>emballeur</td>
+                    <td><input type="text" class="fr-input" placeholder="Contrôle"></td>
+                    <td><input type="text" class="fr-input" placeholder="AFD"></td>
+                  </tr>
+                  <tr>
+                    <td>racoleur</td>
+                    <td><input type="text" class="fr-input" placeholder="Contrôle"></td>
+                    <td><input type="text" class="fr-input" placeholder="AFD"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section T4 : salle de prière musulmane -->
+          <div class="section-title">T4 : salle de prière musulmane – offices religieux du vendredi</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">nombre de fidèles</th>
+                    <th scope="col">nombre d’offices</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td><input type="text" class="fr-input" placeholder="Fidèles"></td>
+                    <td><input type="text" class="fr-input" placeholder="Offices"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section Bagages abandonnés -->
+          <div class="section-title">Bagages abandonnés</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">dont suspect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td><input type="text" class="fr-input" placeholder="Total"></td>
+                    <td><input type="text" class="fr-input" placeholder="Suspects"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section TSO -->
+          <div class="section-title">TSO</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">constat de manquement</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>nombre</td>
+                    <td><input type="text" class="fr-input" placeholder="Nombre"></td>
+                  </tr>
+                  <tr>
+                    <td>réussi</td>
+                    <td><input type="text" class="fr-input" placeholder="Réussi"></td>
+                  </tr>
+                  <tr>
+                    <td>échec</td>
+                    <td><input type="text" class="fr-input" placeholder="Échec"></td>
+                  </tr>
+                  <tr>
+                    <td>Progression annuelle</td>
+                    <td><input type="text" class="fr-input" placeholder="Progression"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section Zone d’attente -->
+          <div class="section-title">Zone d’attente</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th>état journalier :</th>
+                    <td><input type="text" class="fr-input" placeholder="État"></td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section Données statistiques -->
+          <div class="section-title">Données statistiques</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Hebdomadaire</th>
+                    <th scope="col">Mensuel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>INAD</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
+                  </tr>
+                  <tr>
+                    <td>fiches</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
+                  </tr>
+                  <tr>
+                    <td>droits chancellerie</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
+                  </tr>
+                  <tr>
+                    <td>Porteurs de faux</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
+                  </tr>
+                  <tr>
+                    <td>OQTF</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
+                  </tr>
+                  <tr>
+                    <td>Refus d'escale ultra-marine</td>
+                    <td><input type="text" class="fr-input" placeholder="Hebdo"></td>
+                    <td><input type="text" class="fr-input" placeholder="Mensuel"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section Données judiciaires -->
+          <div class="section-title">Données judiciaires</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">procédures</th>
+                    <th scope="col">GAV</th>
+                    <th scope="col">rétention judiciaire</th>
+                    <th scope="col">rétention administrative</th>
+                    <th scope="col">audition libre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td><input type="text" class="fr-input" placeholder="Procédures"></td>
+                    <td><input type="text" class="fr-input" placeholder="GAV"></td>
+                    <td><input type="text" class="fr-input" placeholder="Judiciaire"></td>
+                    <td><input type="text" class="fr-input" placeholder="Administrative"></td>
+                    <td><input type="text" class="fr-input" placeholder="Audition"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section Données contraventionnelles -->
+          <div class="section-title">Données contraventionnelles</div>
+          <div class="form-section">
+            <div class="fr-table">
+              <table class="fr-table fr-table--bordered fr-table--no-caption">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nombre de PVE</th>
+                    <th scope="col">Infractions au stationnement</th>
+                    <th scope="col">Infractions à la circulation</th>
+                    <th scope="col">Immobilisation</th>
+                    <th scope="col">AFD</th>
+                    <th scope="col">IPM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td><input type="text" class="fr-input" placeholder="PVE"></td>
+                    <td><input type="text" class="fr-input" placeholder="Stationnement"></td>
+                    <td><input type="text" class="fr-input" placeholder="Circulation"></td>
+                    <td><input type="text" class="fr-input" placeholder="Immobilisation"></td>
+                    <td><input type="text" class="fr-input" placeholder="AFD"></td>
+                    <td><input type="text" class="fr-input" placeholder="IPM"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Observations semaine -->
+          <div class="section-title">Observations semaine écoulée</div>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la semaine écoulée..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 3 : DCT -->
+      <div class="section" id="dct">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">DCT</h2>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la DCT..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 4 : DIST -->
+      <div class="section" id="dist">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">DIST</h2>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la DIST..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 5 : Etat-major -->
+      <div class="section" id="etatmaj">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">Etat-major</h2>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant l'Etat-major..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 5.5 : DAF -->
+      <div class="section" id="daf">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">DAF</h2>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant la DAF..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 6 : Commandes -->
+      <div class="section" id="commandes">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">Commandes</h2>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici vos observations concernant les commandes..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partie 7 : Agenda de la semaine -->
+      <div class="section" id="agenda">
+        <div class="synthesis-section">
+          <h2 class="fr-h2 text-center">Agenda de la semaine</h2>
+          <div class="form-section">
+            <div class="observation-column">
+              <textarea class="fr-input observation-box" placeholder="Saisissez ici les événements ou actions planifiés pour la semaine..." rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Boutons d'export -->
+    <div class="export-buttons">
+      <h3 class="fr-h3 text-center"><i class="fr-icon-file-export-fill"></i> Exporter le rapport</h3>
+      <div class="text-center">
+        <button class="fr-btn export-btn fr-btn--success" onclick="generatePDF()">
+          <i class="fr-icon-file-pdf-fill"></i> Générer PDF
+        </button>
+        <button class="fr-btn export-btn fr-btn--secondary" onclick="generateODS()">
+          <i class="fr-icon-file-excel-fill"></i> Générer ODS
+        </button>
+        <button class="fr-btn export-btn fr-btn--primary" onclick="downloadAsCSV()">
+          <i class="fr-icon-file-csv-fill"></i> Télécharger CSV
+        </button>
+      </div>
+      <p class="footer-note mt-3">
+        <i class="fr-icon-info-fill"></i> Les fichiers générés incluent toutes les données saisies et les observations
+      </p>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="fr-btn btn-lg" onclick="submitForm()">
+        <i class="fr-icon-save-fill"></i> Enregistrer le rapport
+      </button>
+    </div>
+  </div>
+
+  <!-- DSFR JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@v1.12.1/dist/dsfr.module.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@v1.12.1/dist/dsfr.nomodule.min.js" nomodule type="text/javascript"></script>
+
+  <!-- jsPDF pour PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- SheetJS pour ODS/Excel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script>
+    // Définir la date d'aujourd'hui par défaut
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('reportDate').value = today;
+    });
+
+    let currentSectionIndex = 0;
+    const sections = ['weekend', 'weekly', 'dct', 'dist', 'etatmaj', 'daf', 'commandes', 'agenda'];
+    const tabButtons = document.querySelectorAll('.nav-tab');
+
+    function showSection(index) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.style.display = 'none';
+      });
+      const sectionId = sections[index];
+      document.getElementById(sectionId).style.display = 'block';
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabButtons[index].classList.add('active');
+    }
+
+    function changeSection(direction) {
+      currentSectionIndex += direction;
+      if (currentSectionIndex < 0) currentSectionIndex = sections.length - 1;
+      if (currentSectionIndex >= sections.length) currentSectionIndex = 0;
+      showSection(currentSectionIndex);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection(0);
+    });
+
+    tabButtons.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        currentSectionIndex = index;
+        showSection(currentSectionIndex);
+      });
+    });
+
+    function submitForm() {
+      const date = document.getElementById('reportDate').value;
+      const generalObservations = document.getElementById('generalJudicialObservations').value;
+      if (!date) {
+        alert("Veuillez sélectionner une date");
+        return;
+      }
+      alert(`Rapport enregistré pour la date : ${date}\nObservations générales : ${generalObservations}`);
+    }
+
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(22);
+      doc.text("Compte rendu réunion de service", 105, 20, { align: 'center' });
+      const date = document.getElementById('reportDate').value;
+      doc.setFontSize(14);
+      doc.text(`Date : ${date}`, 20, 30);
+      const generalObs = document.getElementById('generalJudicialObservations').value;
+      if (generalObs.trim()) {
+        doc.setFontSize(12);
+        doc.text("Observations générales sur les affaires judiciaires :", 20, 40);
+        const splitText = doc.splitTextToSize(generalObs, 170);
+        doc.text(splitText, 20, 45);
+      }
+      doc.save("rapport_service.pdf");
+    }
+
+    function generateODS() {
+      alert("Export ODS simulé.");
+    }
+
+    function downloadAsCSV() {
+      alert("Export CSV simulé.");
+    }
+
+    let affairCount = 1;
+
+    function addJudicialAffair() {
+      affairCount++;
+      const container = document.getElementById('judicial-affairs-container');
+      const newAffairDiv = document.createElement('div');
+      newAffairDiv.className = 'judicial-affair-item';
+      newAffairDiv.id = `affair-${affairCount}`;
+      newAffairDiv.innerHTML = `
+        <p><strong>Affaire ${affairCount} :</strong>
+          <button type="button" class="fr-btn fr-btn--sm fr-btn--secondary fr-btn--icon-left" onclick="removeJudicialAffair(${affairCount})">
+            <i class="fr-icon-delete-line" aria-hidden="true"></i> Supprimer
+          </button>
+        </p>
+        <ul>
+          <li><strong>Nature des faits :</strong> <input type="text" class="fr-input" placeholder="Ex: Délit de fuite, Usage d'arme, trafic de drogue, etc."></li>
+          <li><strong>Lieu :</strong> <input type="text" class="fr-input" placeholder="Ex: Gare de Lyon, Quartier X, etc."></li>
+          <li><strong>Résumé des faits :</strong> <textarea class="fr-input observation-box" placeholder="Description détaillée des faits (lieu, personnes impliquées, circonstances, etc.)" rows="2"></textarea></li>
+          <li><strong>Suites judiciaires :</strong> <input type="text" class="fr-input" placeholder="Ex: Mise en examen, Relâchement, Peine, etc."></li>
+        </ul>
+      `;
+      container.insertBefore(newAffairDiv, container.lastElementChild);
+    }
+
+    function removeJudicialAffair(id) {
+      const affairElement = document.getElementById(`affair-${id}`);
+      if (affairElement) {
+        const affairItems = document.querySelectorAll('.judicial-affair-item');
+        if (affairItems.length > 1) {
+          affairElement.remove();
+        } else {
+          alert("Vous devez avoir au moins une affaire.");
         }
-        function removeJudicialAffair(id) {
-            const affairElement = document.getElementById(`affair-${id}`);
-            if (affairElement) {
-                const affairItems = document.querySelectorAll('.judicial-affair-item');
-                if (affairItems.length > 1) {
-                    affairElement.remove();
-                } else {
-                    alert("Vous devez avoir au moins une affaire.");
-                }
-            }
+      }
+    }
+
+    // === SCRIPT POUR CALCULER LES TOTAUX ===
+    function updateDailyTotals() {
+      const rows = document.querySelectorAll('#weekend .fr-table tbody tr');
+      rows.forEach(row => {
+        let total = 0;
+        const inputs = row.querySelectorAll('input[type="text"]');
+        const totalCell = row.querySelector('.daily-total');
+        for (let i = 1; i < inputs.length; i++) {
+          const val = parseFloat(inputs[i].value) || 0;
+          total += val;
         }
-
-        // === SCRIPT POUR CALCULER LES TOTAUX ===
-        function updateDailyTotals() {
-            const rows = document.querySelectorAll('#weekend .fr-table tbody tr');
-
-            rows.forEach(row => {
-                let total = 0;
-                const inputs = row.querySelectorAll('input[type="text"]');
-                const totalCell = row.querySelector('.daily-total');
-
-                // Parcourir les champs numériques (tous sauf le premier qui est le jour)
-                for (let i = 1; i < inputs.length; i++) {
-                    const val = parseFloat(inputs[i].value) || 0;
-                    total += val;
-                }
-
-                // Mettre à jour le total quotidien
-                if (totalCell) {
-                    totalCell.textContent = total.toFixed(0);
-                }
-            });
+        if (totalCell) {
+          totalCell.textContent = total.toFixed(0);
         }
+      });
+    }
 
-        // Écouter les changements dans les champs
-        document.querySelectorAll('#weekend .fr-table input').forEach(input => {
-            input.addEventListener('input', updateDailyTotals);
-        });
+    document.querySelectorAll('#weekend .fr-table input').forEach(input => {
+      input.addEventListener('input', updateDailyTotals);
+    });
 
-        // Initialiser au chargement
-        document.addEventListener('DOMContentLoaded', updateDailyTotals);
-    </script>
+    document.addEventListener('DOMContentLoaded', updateDailyTotals);
+  </script>
 </body>
 </html>
