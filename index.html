@@ -13,6 +13,7 @@
   <style>
     body {
       background-color: #f5f5f5;
+      font-family: 'Marianne', sans-serif;
     }
     .container {
       background-color: white;
@@ -20,6 +21,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       padding: 25px;
       margin-top: 20px;
+      animation: fadeIn 0.6s ease-out;
     }
     .section-title {
       background-color: #eaf4ff;
@@ -28,6 +30,7 @@
       margin-top: 30px;
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      animation: slideInLeft 0.5s ease-out;
     }
     .observation-column {
       background-color: #eaf4ff;
@@ -35,6 +38,7 @@
       border-radius: 6px;
       border-left: 4px solid #a3c9ff;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      animation: fadeInUp 0.6s ease-out;
     }
     .synthesis-section {
       background-color: #f0f8ff;
@@ -42,6 +46,7 @@
       border-radius: 8px;
       margin-bottom: 30px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      animation: fadeIn 0.8s ease-out;
     }
     .date-header {
       background-color: #e0f0ff;
@@ -49,6 +54,7 @@
       border-radius: 6px;
       margin-bottom: 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      animation: slideInDown 0.6s ease-out;
     }
     .export-buttons {
       background-color: #f0f8ff;
@@ -56,6 +62,7 @@
       border-radius: 8px;
       margin-top: 30px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      animation: fadeIn 0.7s ease-out;
     }
     .footer-note {
       font-size: 0.85rem;
@@ -70,15 +77,21 @@
       margin-bottom: 20px;
       padding-bottom: 15px;
       border-bottom: 2px solid #d0e7ff;
+      animation: slideInDown 0.5s ease-out;
     }
     .logo-container {
       flex-shrink: 0;
       display: flex;
       align-items: center;
+      animation: bounceIn 0.6s ease-out;
     }
     .logo-container img {
-      max-height: 80px;
+      max-height: 120px;
       width: auto;
+      transition: transform 0.3s ease;
+    }
+    .logo-container:hover img {
+      transform: scale(1.05);
     }
     .header-text {
       flex-grow: 1;
@@ -88,11 +101,13 @@
     .header-text h1 {
       margin: 0;
       font-size: 1.8rem;
+      animation: fadeIn 0.5s ease-out;
     }
     .header-text p {
       margin: 5px 0 0 0;
       color: #7f8c8d;
       font-size: 1rem;
+      animation: fadeIn 0.6s ease-out;
     }
     .bullet-list {
       padding-left: 20px;
@@ -102,10 +117,58 @@
       margin-bottom: 5px;
     }
 
+    /* Animations CSS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
     /* Carousel Navigation */
     .carousel-nav {
       margin-top: 20px;
       margin-bottom: 20px;
+      animation: fadeIn 0.7s ease-out;
     }
     .nav-container {
       display: flex;
@@ -134,14 +197,17 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      animation: fadeIn 0.5s ease-out;
     }
     .nav-tab.active {
       background-color: #0050ef;
       color: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      animation: pulse 1s infinite;
     }
     .nav-tab:hover:not(.active) {
       background-color: #b3d1ff;
+      transform: translateY(-2px);
     }
     .nav-btn {
       padding: 12px 18px;
@@ -153,10 +219,12 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      animation: fadeIn 0.5s ease-out;
     }
     .nav-btn:hover {
       background-color: #c0e0ff;
       transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     /* Section carousel */
@@ -168,6 +236,7 @@
     .section.active {
       display: block;
       opacity: 1;
+      animation: fadeIn 0.6s ease-out;
     }
 
     /* Boutons export modernes */
@@ -180,6 +249,7 @@
       align-items: center;
       gap: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      animation: fadeIn 0.6s ease-out;
     }
     .export-btn:hover {
       transform: translateY(-2px);
@@ -193,6 +263,7 @@
       border-radius: 8px;
       transition: all 0.3s ease;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 0.7s ease-out;
     }
     .btn-lg:hover {
       transform: translateY(-2px);
@@ -216,6 +287,9 @@
       .nav-tab, .nav-btn {
         padding: 10px 12px;
         font-size: 0.9rem;
+      }
+      .logo-container img {
+        max-height: 90px;
       }
     }
   </style>
