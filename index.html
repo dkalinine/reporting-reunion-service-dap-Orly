@@ -101,6 +101,7 @@
     .bullet-list li {
       margin-bottom: 5px;
     }
+
     /* Carousel Navigation */
     .carousel-nav {
       margin-top: 20px;
@@ -123,34 +124,81 @@
       display: none;
     }
     .nav-tab {
-      padding: 10px 15px;
+      padding: 12px 18px;
       background-color: #d0e7ff;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       white-space: nowrap;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .nav-tab.active {
       background-color: #0050ef;
       color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .nav-tab:hover:not(.active) {
+      background-color: #b3d1ff;
     }
     .nav-btn {
-      padding: 10px 15px;
+      padding: 12px 18px;
       background-color: #e0f0ff;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .nav-btn:hover {
       background-color: #c0e0ff;
+      transform: translateY(-2px);
     }
+
     /* Section carousel */
     .section {
       display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
     .section.active {
       display: block;
+      opacity: 1;
     }
+
+    /* Boutons export modernes */
+    .export-btn {
+      margin: 5px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+    .export-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    }
+
+    /* Bouton principal */
+    .btn-lg {
+      padding: 14px 24px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn-lg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
@@ -164,6 +212,10 @@
       }
       .header-text h1 {
         font-size: 1.5rem;
+      }
+      .nav-tab, .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -197,18 +249,38 @@
     <!-- Navigation Carousel -->
     <div class="carousel-nav">
       <div class="nav-container">
-        <button class="nav-btn fr-btn fr-btn--secondary" onclick="changeSection(-1)">&#10094; Précédent</button>
+        <button class="nav-btn fr-btn fr-btn--secondary" onclick="changeSection(-1)">
+          <i class="fas fa-arrow-left"></i> Précédent
+        </button>
         <div class="nav-tabs-carousel">
-          <button class="nav-tab active" data-target="weekend">Synthèse du week-end</button>
-          <button class="nav-tab" data-target="weekly">Synthèse hebdomadaire</button>
-          <button class="nav-tab" data-target="dct">DCT</button>
-          <button class="nav-tab" data-target="dist">DIST</button>
-          <button class="nav-tab" data-target="etatmaj">Etat-major</button>
-          <button class="nav-tab" data-target="daf">DAF</button>
-          <button class="nav-tab" data-target="commandes">Commandes</button>
-          <button class="nav-tab" data-target="agenda">Agenda de la semaine</button>
+          <button class="nav-tab active" data-target="weekend">
+            <i class="fas fa-calendar-week"></i> Week-end
+          </button>
+          <button class="nav-tab" data-target="weekly">
+            <i class="fas fa-chart-line"></i> Hebdomadaire
+          </button>
+          <button class="nav-tab" data-target="dct">
+            <i class="fas fa-building"></i> DCT
+          </button>
+          <button class="nav-tab" data-target="dist">
+            <i class="fas fa-globe-europe"></i> DIST
+          </button>
+          <button class="nav-tab" data-target="etatmaj">
+            <i class="fas fa-flag"></i> Etat-major
+          </button>
+          <button class="nav-tab" data-target="daf">
+            <i class="fas fa-money-bill-wave"></i> DAF
+          </button>
+          <button class="nav-tab" data-target="commandes">
+            <i class="fas fa-tasks"></i> Commandes
+          </button>
+          <button class="nav-tab" data-target="agenda">
+            <i class="fas fa-calendar-alt"></i> Agenda
+          </button>
         </div>
-        <button class="nav-btn fr-btn fr-btn--secondary" onclick="changeSection(1)">Suivant &#10095;</button>
+        <button class="nav-btn fr-btn fr-btn--secondary" onclick="changeSection(1)">
+          Suivant <i class="fas fa-arrow-right"></i>
+        </button>
       </div>
     </div>
 
@@ -735,10 +807,10 @@
 
     function showSection(index) {
       document.querySelectorAll('.section').forEach(section => {
-        section.style.display = 'none';
+        section.classList.remove('active');
       });
       const sectionId = sections[index];
-      document.getElementById(sectionId).style.display = 'block';
+      document.getElementById(sectionId).classList.add('active');
       tabButtons.forEach(btn => btn.classList.remove('active'));
       tabButtons[index].classList.add('active');
     }
